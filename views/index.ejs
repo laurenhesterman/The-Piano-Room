@@ -1,0 +1,424 @@
+<html>
+<head>
+<title>The Piano Room</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="icon" type="image/png" sizes="174x174" href="./style/favicon.png">
+
+<!-- <script src="../build/Tone.js"></script>
+<script src="./scripts/jquery.min.js"></script>
+<script src="./scripts/draggabilly.js"></script>
+<script src="./scripts/StartAudioContext.js"></script>
+<script src="./scripts/Interface.js"></script>
+<script src="https://tonejs.github.io/Logo/build/Logo.js"></script>
+<script src="./scripts/Keyboard.js"></script> -->
+
+<link rel="stylesheet" type="text/css" href="./style/examples.css">
+
+<style>
+    * { box-sizing:border-box; }
+
+    body{ margin:1em; background: #dde3f7; }
+
+    ul {
+        height:20.875em; width:47.8em;
+        margin: 0 auto;
+        padding:2em 1em 1em 1.2em; position:relative; 
+        border:1px solid #160801; border-radius:.2em; 
+        background:-webkit-gradient(linear, right bottom, left top, color-stop(0%,rgba(0,0,0,0.3)), color-stop(100%,rgba(0,0,0,0))), url('https://f.cl.ly/items/2q1f3t0C3R1b0g081w3n/vwood.png');
+        box-shadow:0 0 50px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5); }
+
+    li { margin:0; padding:0; list-style:none; position:relative; float:left; }
+
+    .white {
+        height:16em; width:4em; 
+        border-left:1px solid #bbb;
+        border-bottom:1px solid #bbb;
+        border-radius:0 0 5px 5px;
+        box-shadow:-1px 0 0 rgba(255,255,255,0.8) inset, 0 0 5px #ccc inset, 0 0 3px rgba(0,0,0,0.2);
+        background: white;
+        background: linear-gradient(top, #eee 0%,#fff 100%);
+        color: grey;
+        text-align: center;
+        /* linear-gradient(top, #eee 0%,#fff 100%); */
+    }
+    .active {
+
+        height:16em; width:4em; 
+        border-left:1px solid #bbb;
+        border-bottom:1px solid #bbb;
+        border-radius:0 0 5px 5px;
+        box-shadow:-1px 0 0 rgba(255,255,255,0.8) inset, 0 0 5px #ccc inset, 0 0 3px rgba(0,0,0,0.2);
+        background: silver;
+        
+        background: linear-gradient(top, #fff 0%,#e9e9e9 100%);
+        }
+       
+
+    .black {
+        height:8em; width:2em; margin:0 0 0 -1em; z-index:2;
+        border:1px solid #000;
+        border-radius:0 0 3px 3px;
+        box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset, 0 -5px 2px 3px rgba(0,0,0,0.6) inset, 0 2px 4px rgba(0,0,0,0.5);
+        background:linear-gradient(45deg, #222 0%,rgb(104, 104, 104) 100%);
+        color: grey;
+        text-align: center;
+    }
+    .blackactive {
+        height:8em; width:2em; margin:0 0 0 -1em; z-index:2;
+        border:1px solid #000;
+        border-radius:0 0 3px 3px;
+        box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset, 0 -5px 2px 3px rgba(0,0,0,0.6) inset, 0 2px 4px rgba(0,0,0,0.5);
+        background:linear-gradient(45deg, #222 0%,rgb(8, 8, 8) 100%);
+        box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset, 0 -2px 2px 3px rgba(0,0,0,0.6) inset, 0 1px 2px rgba(0,0,0,0.5);
+	    background:linear-gradient(left, #444 0%,#222 100%);
+    }
+    .a,.g,.f,.d,.c { margin:0 0 0 -1em;  }
+
+    ul li:first-child { border-radius:5px 0 5px 5px; }
+    ul li:last-child { border-radius:0 5px 5px 5px; }
+
+    #insert {
+        background-color: white;
+        margin: 1em;
+        border: 1px solid black;
+        padding: .5em;
+        border-radius: 1em;
+        box-shadow: 0 0 5px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset, 0 5px 15px rgba(0,0,0,0.5);
+        font-size: 80%
+        
+    }
+
+    #beats {
+        margin: 0 auto;
+        align-content: center;
+        position: relative;
+        /* top: 5px;
+        left: 100px; */
+        width: 290px;
+        padding-bottom: 1em;
+        padding-top: 1em;
+        
+    }
+    input {
+        border: 1px black solid;
+        border-radius: .5em;
+        box-shadow: 0 0 5px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset, 0 5px 15px rgba(0,0,0,0.5);
+    }
+    
+
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript">
+         $(document). ready(function (){
+            // this triggers the connection event in our server!
+            var socket  = io.connect();
+            var str = "";
+            $('#button1').click(function (){
+                socket.emit( "button1_clicked");
+            });
+            $('#button2').click(function (){
+                socket.emit( "button2_clicked");
+            });
+            $('#button3').click(function (){
+                socket.emit( "button3_clicked");
+            });
+            
+            socket.on('server_response0', function(letter){ 
+                str += letter  
+                document.getElementById('insert').innerHTML = str             
+                document.getElementById("zero").classList.remove('white');
+                document.getElementById("zero").classList.add('active');
+                setTimeout(function() {
+                document.getElementById("zero").classList.remove('active');
+                document.getElementById("zero").classList.add('white');
+              }, 200);                        
+            });
+            socket.on('server_response1', function(letter){ 
+                str += letter  
+                document.getElementById('insert').innerHTML = str             
+                document.getElementById("one").classList.remove('black');
+                document.getElementById("one").classList.add('blackactive');
+                setTimeout(function() {
+                document.getElementById("one").classList.remove('blackactive');
+                document.getElementById("one").classList.add('black');
+              }, 200);                        
+            });
+            socket.on('server_response2', function(letter){ 
+                str += letter  
+                document.getElementById('insert').innerHTML = str             
+                document.getElementById("two").classList.remove('white');
+                document.getElementById("two").classList.add('active');
+                setTimeout(function() {
+                document.getElementById("two").classList.remove('active');
+                document.getElementById("two").classList.add('white');
+              }, 200);                        
+            });
+            socket.on('server_response3', function(letter){ 
+                str += letter  
+                document.getElementById('insert').innerHTML = str             
+                document.getElementById("three").classList.remove('black');
+                document.getElementById("three").classList.add('blackactive');
+                setTimeout(function() {
+                document.getElementById("three").classList.remove('blackactive');
+                document.getElementById("three").classList.add('black');
+              }, 200);                        
+            });
+            socket.on('server_response4', function(letter){ 
+                str += letter  
+                document.getElementById('insert').innerHTML = str             
+                document.getElementById("four").classList.remove('white');
+                document.getElementById("four").classList.add('active');
+                setTimeout(function() {
+                document.getElementById("four").classList.remove('active');
+                document.getElementById("four").classList.add('white');
+              }, 200);                        
+            });
+            socket.on('server_response5', function(letter){ 
+                str += letter  
+                document.getElementById('insert').innerHTML = str             
+                document.getElementById("five").classList.remove('black');
+                document.getElementById("five").classList.add('blackactive');
+                setTimeout(function() {
+                document.getElementById("five").classList.remove('blackactive');
+                document.getElementById("five").classList.add('black');
+              }, 200);                        
+            });
+            socket.on('server_response6', function(letter){ 
+                str += letter  
+                document.getElementById('insert').innerHTML = str             
+                document.getElementById("six").classList.remove('white');
+                document.getElementById("six").classList.add('active');
+                setTimeout(function() {
+                document.getElementById("six").classList.remove('active');
+                document.getElementById("six").classList.add('white');
+              }, 200);                        
+            });
+            socket.on('server_response7', function(letter){ 
+                str += letter  
+                document.getElementById('insert').innerHTML = str             
+                document.getElementById("seven").classList.remove('white');
+                document.getElementById("seven").classList.add('active');
+                setTimeout(function() {
+                document.getElementById("seven").classList.remove('active');
+                document.getElementById("seven").classList.add('white');
+              }, 200);                        
+            });
+            socket.on('server_response8', function(letter){ 
+                str += letter  
+                document.getElementById('insert').innerHTML = str             
+                document.getElementById("eight").classList.remove('black');
+                document.getElementById("eight").classList.add('blackactive');
+                setTimeout(function() {
+                document.getElementById("eight").classList.remove('blackactive');
+                document.getElementById("eight").classList.add('black');
+              }, 200);                        
+            });
+            socket.on('server_response9', function(letter){ 
+                str += letter  
+                document.getElementById('insert').innerHTML = str             
+                document.getElementById("nine").classList.remove('white');
+                document.getElementById("nine").classList.add('active');
+                setTimeout(function() {
+                document.getElementById("nine").classList.remove('active');
+                document.getElementById("nine").classList.add('white');
+              }, 200);                        
+            });
+            socket.on('server_response10', function(letter){ 
+                str += letter  
+                document.getElementById('insert').innerHTML = str             
+                document.getElementById("ten").classList.remove('black');
+                document.getElementById("ten").classList.add('blackactive');
+                setTimeout(function() {
+                document.getElementById("ten").classList.remove('blackactive');
+                document.getElementById("ten").classList.add('black');
+              }, 200);                        
+            });
+            socket.on('server_response11', function(letter){ 
+                str += letter  
+                document.getElementById('insert').innerHTML = str             
+                document.getElementById("eleven").classList.remove('white');
+                document.getElementById("eleven").classList.add('active');
+                setTimeout(function() {
+                document.getElementById("eleven").classList.remove('active');
+                document.getElementById("eleven").classList.add('white');
+              }, 200);                        
+            });
+            socket.on('server_response12', function(letter){ 
+                str += letter  
+                document.getElementById('insert').innerHTML = str             
+                document.getElementById("twelve").classList.remove('white');
+                document.getElementById("twelve").classList.add('active');
+                setTimeout(function() {
+                document.getElementById("twelve").classList.remove('active');
+                document.getElementById("twelve").classList.add('white');
+              }, 200);                        
+            });
+            socket.on('server_response13', function(letter){ 
+                str += letter  
+                document.getElementById('insert').innerHTML = str             
+                document.getElementById("thirteen").classList.remove('black');
+                document.getElementById("thirteen").classList.add('blackactive');
+                setTimeout(function() {
+                document.getElementById("thirteen").classList.remove('blackactive');
+                document.getElementById("thirteen").classList.add('black');
+              }, 200);                        
+            });
+            socket.on('server_response14', function(letter){ 
+                str += letter  
+                document.getElementById('insert').innerHTML = str             
+                document.getElementById("fourteen").classList.remove('white');
+                document.getElementById("fourteen").classList.add('active');
+                setTimeout(function() {
+                document.getElementById("fourteen").classList.remove('active');
+                document.getElementById("fourteen").classList.add('white');
+              }, 200);                        
+            });
+            socket.on('server_response15', function(letter){ 
+                str += letter  
+                document.getElementById('insert').innerHTML = str             
+                document.getElementById("fifteen").classList.remove('white');
+                document.getElementById("fifteen").classList.add('active');
+                setTimeout(function() {
+                document.getElementById("fifteen").classList.remove('active');
+                document.getElementById("fifteen").classList.add('white');
+              }, 200);                        
+            });
+            socket.on('server_response16', function(letter){ 
+                str += letter  
+                document.getElementById('insert').innerHTML = str             
+                document.getElementById("sixteen").classList.remove('white');
+                document.getElementById("sixteen").classList.add('active');
+                setTimeout(function() {
+                document.getElementById("sixteen").classList.remove('active');
+                document.getElementById("sixteen").classList.add('white');
+              }, 200);                        
+            });
+            socket.on('server_response17', function(letter){ 
+                str += letter  
+                document.getElementById('insert').innerHTML = str             
+                document.getElementById("seventeen").classList.remove('black');
+                document.getElementById("seventeen").classList.add('blackactive');
+                setTimeout(function() {
+                document.getElementById("seventeen").classList.remove('blackactive');
+                document.getElementById("seventeen").classList.add('black');
+              }, 200);                        
+            });
+            socket.on('server_response18', function(letter){ 
+                str += letter  
+                document.getElementById('insert').innerHTML = str             
+                document.getElementById("eighteen").classList.remove('black');
+                document.getElementById("eighteen").classList.add('blackactive');
+                setTimeout(function() {
+                document.getElementById("eighteen").classList.remove('blackactive');
+                document.getElementById("eighteen").classList.add('black');
+              }, 200);                        
+            });
+                      
+            $(document).keydown( function(event) {
+                if(event.keyCode == 65) {                               
+                    socket.emit( "f_clicked");
+                }
+                if(event.keyCode == 87) {              
+                    socket.emit( "gb_clicked");
+                }
+                if(event.keyCode == 83) {                    
+                    socket.emit( "g_clicked");
+                }
+                if(event.keyCode == 69) {                    
+                    socket.emit( "ab_clicked");
+                }
+                if(event.keyCode == 68) {                  
+                    socket.emit( "a_clicked");
+                }
+                if(event.keyCode == 82) {                               
+                    socket.emit( "bb_clicked");
+                }
+                if(event.keyCode == 70) {                  
+                    socket.emit( "b_clicked");
+                }
+                if(event.keyCode == 71) {                    
+                    socket.emit( "c_clicked");
+                }
+                if(event.keyCode == 89) {                   
+                    socket.emit( "db_clicked");
+                }
+                if(event.keyCode == 72) {                   
+                    socket.emit( "d_clicked");
+                }
+                if(event.keyCode == 85) {                  
+                    socket.emit( "eb_clicked");
+                }
+                if(event.keyCode == 74) {                
+                    socket.emit( "e_clicked");
+                }
+                if(event.keyCode == 75) {                   
+                    socket.emit( "f2_clicked");
+                }
+                if(event.keyCode == 79) {                   
+                    socket.emit( "gb2_clicked");
+                }
+                if(event.keyCode == 76) {                  
+                    socket.emit( "g2_clicked");
+                }
+                if(event.keyCode == 80) {                
+                    socket.emit( "ab2_clicked");
+                }
+                if(event.keyCode == 186) {                   
+                    socket.emit( "a2_clicked");
+                }
+                if(event.keyCode == 219) {                  
+                    socket.emit( "bb2_clicked");
+                }
+                if(event.keyCode == 222) {                
+                    socket.emit( "b2_clicked");
+                }
+            });
+        })
+
+    </script>
+    
+
+</head>
+<body>
+    
+    <div id="beats">
+        <input id="button1" type="button" value="Track 1">
+        <input id="button2" type="button" value="Track 2">
+        <input id="button3" type="button" value="Track 3">
+        <input id="button4" type="button" value="Track 4">
+        <input id="button5" type="button" value="Track 5">
+    </div>
+    
+    
+ 
+       
+
+    <ul class="set">
+            <li class="white b" id="zero"> A</li>          
+            <li class="black as" id="one">W</li>
+            <li class="white a" id="two">S</li>
+            <li class="black gs" id="three">W</li>
+            <li class="white g" id="four">D</li>
+            <li class="black fs" id="five">R</li>
+            <li class="white f" id="six">F</li>
+            <li class="white e" id="seven">G</li>
+            <li class="black ds" id="eight">Y</li>
+            <li class="white d" id="nine">H</li>
+            <li class="black cs" id="ten">U</li>
+            <li class="white c" id="eleven">J</li>
+            <li class="white b" id="twelve">K</li>
+            <li class="black as" id="thirteen">O</li>
+            <li class="white a" id="fourteen">L</li>
+            <li class="black gs" id="seventeen">P</li>
+            <li class="white g" id="fifteen">;</li>
+            <li class="black fs" id="eighteen">[</li>
+            <li class="white f" id="sixteen">'</li>
+     </ul>
+            <!-- <div id="panel">
+                <div id="chat"></div>
+                <input value="Type Message Here"> 
+            </div> -->
+            <div id="insert"></div>
+</body>
+</html>
