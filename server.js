@@ -3,8 +3,10 @@ var express = require( "express");
 var path = require( "path");
 var app = express();
 var player = require('play-sound')(opts = {})
-var howler = require("howler")
-app.use(express.static(path.join(__dirname, "./static")));
+// var howler = require("howler")
+// var Soundfont = require('soundfont-player')
+app.use(express.static(__dirname + "/static"));
+// app.use(express.static(path.join(__dirname, "./static")));
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
 
@@ -37,7 +39,8 @@ io.sockets.on('connection', function (socket) {
     })
     socket.on( "f_clicked", function (){
         player.play('f.wav')   
-        var letter = "F "    
+        var letter = "F "   
+        // var ac = new AudioContext()
         io.emit( 'server_response0', letter);
     })
     socket.on( "gb_clicked", function (){
@@ -129,6 +132,9 @@ io.sockets.on('connection', function (socket) {
         player.play('b2.wav')
         var letter = "B  "        
         io.emit( 'server_response16', letter);
+    })
+    socket.on("submitbutton_clicked", function(bla){
+        io.emit( 'updatechat', bla);
     })
 
   })   

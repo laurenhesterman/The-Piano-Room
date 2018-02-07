@@ -1,0 +1,240 @@
+* { box-sizing:border-box; }
+
+body{ margin:1em; background: #dde3f7; 
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #084360;}
+
+.set {
+    height:20.875em; width:47.8em;
+    /* margin: 0 auto; */
+    margin-left: 2em;
+    padding:2em 1em 1em 1.2em; position:relative; 
+    border:1px solid #084360; border-radius:.2em; 
+    background:-webkit-gradient(linear, right bottom, left top, color-stop(0%,rgba(0,0,0,0.3)), color-stop(100%,rgba(0,0,0,0))), url('https://f.cl.ly/items/2q1f3t0C3R1b0g081w3n/vwood.png');
+    box-shadow:0 0 50px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5); 
+    display: inline-block;}
+    
+li { margin:0; padding:0; list-style:none; position:relative; float:left; }
+
+.white {
+    height:16em; width:4em; 
+    border-left:1px solid #bbb;
+    border-bottom:1px solid #bbb;
+    border-radius:0 0 5px 5px;
+    box-shadow:-1px 0 0 rgba(255,255,255,0.8) inset, 0 0 5px #ccc inset, 0 0 3px rgba(0,0,0,0.2);
+    background: white;
+    background: linear-gradient(top, #eee 0%,#fff 100%);
+    color: grey;
+    text-align: center;
+    /* linear-gradient(top, #eee 0%,#fff 100%); */
+}
+.active {
+
+    height:16em; width:4em; 
+    border-left:1px solid #bbb;
+    border-bottom:1px solid #bbb;
+    border-radius:0 0 5px 5px;
+    box-shadow:-1px 0 0 rgba(255,255,255,0.8) inset, 0 0 5px #ccc inset, 0 0 3px rgba(0,0,0,0.2);
+    background: silver;
+    
+    background: linear-gradient(top, #fff 0%,#e9e9e9 100%);
+    }
+   
+
+.black {
+    height:8em; width:2em; margin:0 0 0 -1em; z-index:2;
+    border:1px solid #000;
+    border-radius:0 0 3px 3px;
+    box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset, 0 -5px 2px 3px rgba(0,0,0,0.6) inset, 0 2px 4px rgba(0,0,0,0.5);
+    background:linear-gradient(45deg, #222 0%,rgb(104, 104, 104) 100%);
+    color: grey;
+    text-align: center;
+}
+.blackactive {
+    height:8em; width:2em; margin:0 0 0 -1em; z-index:2;
+    border:1px solid #000;
+    border-radius:0 0 3px 3px;
+    box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset, 0 -5px 2px 3px rgba(0,0,0,0.6) inset, 0 2px 4px rgba(0,0,0,0.5);
+    background:linear-gradient(45deg, #222 0%,rgb(8, 8, 8) 100%);
+    box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset, 0 -2px 2px 3px rgba(0,0,0,0.6) inset, 0 1px 2px rgba(0,0,0,0.5);
+    background:linear-gradient(left, #444 0%,#222 100%);
+}
+.a,.g,.f,.d,.c { margin:0 0 0 -1em;  }
+
+ul li:first-child { border-radius:5px 0 5px 5px; }
+ul li:last-child { border-radius:0 5px 5px 5px; }
+
+#insert {
+    background-color: white;
+    margin-top: 1em;
+    margin-left: 2em;
+    margin-left: 2em;
+    border: 1px solid #084360;
+    padding: .5em;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset, 0 5px 15px rgba(0,0,0,0.5);
+    font-size: 80%
+    
+}
+
+#beats {
+    /* margin: 0 auto; */
+    /* align-content: center; */
+    /* position: relative; */
+    /* top: 5px;
+    left: 100px; */
+    height: 60px;
+    padding-bottom: 1em;
+    padding-top: 1em;
+    padding-left: 2em;
+    
+}
+#beats button {
+    border: 1px #084360 solid;
+    border-radius: .5em;
+    height: 2.9em;
+    vertical-align: top;
+    position: relative;
+    top: 4px;
+    right: 100px;
+    left: 750px;
+    width: 55px;
+    color: #084360;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset, 0 5px 15px rgba(0,0,0,0.5);
+}
+#switch {
+position: relative;
+/* align-content: center; */
+margin-left: 2em;
+display: inline-block;
+width: 60px;
+height: 34px;
+display: block;
+}
+#panel {
+display: inline-block;
+margin-left: 1em;
+margin-top: 1em;
+margin-bottom: 1em;
+height:20.875em; width:17.8em;
+/* margin-bottom: 1em; */
+position: relative;
+vertical-align: top;
+}
+#chat {
+display: block;
+height: 22.8em;
+/* width: 45px; */
+width:21.8em;
+box-shadow:-1px 0 0 rgba(255,255,255,0.8) inset, 0 0 5px #ccc inset, 0 0 3px rgba(0,0,0,0.2);
+background: white;
+background: linear-gradient(top, #eee 0%,#fff 100%);
+margin-bottom: .5em;
+font-size: 13px;
+border: .4px solid #084360;
+border-radius: 5px;
+box-shadow: 0 0 5px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset, 0 5px 15px rgba(0,0,0,0.5);
+
+}
+#chatinput {
+width: 24em;
+border: .4px solid #084360;
+height: 3.2em;
+padding-left: 1em;
+display: inline-block;
+font-size: 10px;
+border-radius: 5px;
+box-shadow: 0 0 5px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset, 0 5px 15px rgba(0,0,0,0.5);
+
+
+}
+button {
+width: 3.4em;
+display: inline-block;
+height: 2.8em;
+border-radius: .5em;
+border: .4px solid #084360;
+box-shadow: 0 0 5px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset, 0 5px 15px rgba(0,0,0,0.5);
+}
+#beats button {
+/* background-color: red; */
+vertical-align: top;
+position: relative;
+left: 430px;
+
+}
+
+
+/* Hide default HTML checkbox */
+#switch {
+display:inline-block;
+/* background-color: red; */
+vertical-align: top;
+position: relative;
+left: 400px;
+}
+
+/* The slider */
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+-webkit-transition: .4s;
+transition: .4s;
+border: 1px solid #084360;
+border-radius: .5em;
+box-shadow: 0 0 5px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset, 0 5px 15px rgba(0,0,0,0.5);
+/* align-content: center; */
+}
+
+.slider:before {
+position: absolute;
+content: "";
+height: 26px;
+width: 26px;
+left: 4px;
+bottom: 4px;
+background-color: white;
+-webkit-transition: .4s;
+transition: .4s;
+border-radius: .5em;
+
+
+}
+img {
+height: 50px;
+}
+
+input:checked + .slider {
+background-color: grey;
+border: 1px solid #084360;
+border-radius: .5em;
+}
+
+
+input:checked + .slider:before {
+-webkit-transform: translateX(26px);
+-ms-transform: translateX(26px);
+transform: translateX(26px);
+border-radius: .5em;
+box-shadow: 0 0 5px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset, 0 5px 15px rgba(0,0,0,0.5);
+
+}
+h1 {
+display: inline-block;
+font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+font-size: 45px;
+vertical-align: bottom;
+margin: 0px;
+/* margin-top: 100px; */
+font-weight: 100px;
+/* font-stretch: extra-expanded; */
+}
+
+
+
+

@@ -1,6 +1,7 @@
 <html>
 <head>
 <title>The Piano Room</title>
+
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="icon" type="image/png" sizes="174x174" href="./style/favicon.png">
 
@@ -12,21 +13,26 @@
 <script src="https://tonejs.github.io/Logo/build/Logo.js"></script>
 <script src="./scripts/Keyboard.js"></script> -->
 
-<link rel="stylesheet" type="text/css" href="./style/examples.css">
+<link rel="stylesheet" type="text/css" href="example.css">
 
 <style>
     * { box-sizing:border-box; }
 
-    body{ margin:1em; background: #dde3f7; }
+    body{ margin:1em; 
+        background: linear-gradient(silver, rgba(0,0,128, .3));
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: #084360;}
 
-    ul {
+   .set {
         height:20.875em; width:47.8em;
-        margin: 0 auto;
+        /* margin: 0 auto; */
+        margin-left: 2em;
         padding:2em 1em 1em 1.2em; position:relative; 
-        border:1px solid #160801; border-radius:.2em; 
+        border:1px solid #084360; border-radius:.2em; 
         background:-webkit-gradient(linear, right bottom, left top, color-stop(0%,rgba(0,0,0,0.3)), color-stop(100%,rgba(0,0,0,0))), url('https://f.cl.ly/items/2q1f3t0C3R1b0g081w3n/vwood.png');
-        box-shadow:0 0 50px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5); }
-
+        box-shadow:0 0 50px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5); 
+        display: inline-block;}
+        
     li { margin:0; padding:0; list-style:none; position:relative; float:left; }
 
     .white {
@@ -79,41 +85,198 @@
 
     #insert {
         background-color: white;
-        margin: 1em;
-        border: 1px solid black;
+        margin-top: 1em;
+        margin-left: 2em;
+        margin-left: 2em;
+        border: 1px solid #084360;
         padding: .5em;
-        border-radius: 1em;
+        border-radius: 5px;
         box-shadow: 0 0 5px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset, 0 5px 15px rgba(0,0,0,0.5);
         font-size: 80%
         
     }
 
     #beats {
-        margin: 0 auto;
-        align-content: center;
-        position: relative;
+        /* margin: 0 auto; */
+        /* align-content: center; */
+        /* position: relative; */
         /* top: 5px;
         left: 100px; */
-        width: 290px;
+        height: 60px;
         padding-bottom: 1em;
         padding-top: 1em;
+        padding-left: 2em;
         
     }
-    input {
-        border: 1px black solid;
+    #beats button {
+        border: 1px #084360 solid;
         border-radius: .5em;
+        height: 2.9em;
+        vertical-align: top;
+        position: relative;
+        top: 4px;
+        right: 100px;
+        left: 750px;
+        width: 55px;
+        color: #084360;
         box-shadow: 0 0 5px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset, 0 5px 15px rgba(0,0,0,0.5);
     }
+    #switch {
+  position: relative;
+  /* align-content: center; */
+  margin-left: 2em;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  display: block;
+}
+#panel {
+    display: inline-block;
+    margin-left: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    height:20.875em; width:17.8em;
+    /* margin-bottom: 1em; */
+    position: relative;
+    vertical-align: top;
+}
+#chat {
+    display: block;
+    height: 22.8em;
+    /* width: 45px; */
+    width:21.8em;
+    box-shadow:-1px 0 0 rgba(255,255,255,0.8) inset, 0 0 5px #ccc inset, 0 0 3px rgba(0,0,0,0.2);
+    background: white;
+    background: linear-gradient(top, #eee 0%,#fff 100%);
+    margin-bottom: .5em;
+    font-size: 13px;
+    border: .4px solid #084360;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset, 0 5px 15px rgba(0,0,0,0.5);
+
+}
+#chatinput {
+    width: 24em;
+    border: .4px solid #084360;
+    height: 3.2em;
+    padding-left: 1em;
+    display: inline-block;
+    font-size: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset, 0 5px 15px rgba(0,0,0,0.5);
     
+
+}
+button {
+width: 3.4em;
+display: inline-block;
+height: 2.8em;
+border-radius: .5em;
+border: .4px solid #084360;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset, 0 5px 15px rgba(0,0,0,0.5);
+}
+#beats button {
+    /* background-color: red; */
+    vertical-align: top;
+    position: relative;
+    left: 430px;
+   
+}
+
+
+/* Hide default HTML checkbox */
+#switch {
+    display:inline-block;
+    /* background-color: red; */
+    vertical-align: top;
+    position: relative;
+    left: 400px;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border: 1px solid #084360;
+  border-radius: .5em;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset, 0 5px 15px rgba(0,0,0,0.5);
+  /* align-content: center; */
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: .5em;
+  
+  
+}
+img {
+    height: 50px;
+}
+
+input:checked + .slider {
+  background-color: grey;
+  border: 1px solid #084360;
+  border-radius: .5em;
+}
+
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+  border-radius: .5em;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset, 0 5px 15px rgba(0,0,0,0.5);
+  
+}
+h1 {
+    display: inline-block;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+   font-size: 45px;
+   vertical-align: bottom;
+   margin: 0px;
+   /* margin-top: 100px; */
+   font-weight: 100px;
+   /* font-stretch: extra-expanded; */
+}
+.shade {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    position: absolute;
+    top: 93px;
+    left: 49px;
+    z-index:1;
+    height:20.875em; width:47.8em;
+}
 
     </style>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
     <script type ="text/javascript">
          $(document). ready(function (){
+            if (!pianoon){
+                  var pianoon = true
+                  console.log(pianoon, "1")
+              }
             // this triggers the connection event in our server!
             var socket  = io.connect();
             var str = "";
+            
+            // console.log(pianoon)
             $('#button1').click(function (){
                 socket.emit( "button1_clicked");
             });
@@ -123,6 +286,31 @@
             $('#button3').click(function (){
                 socket.emit( "button3_clicked");
             });
+            $('.slider').click(function (){
+              
+             
+              if (pianoon == true){
+                  pianoon = false
+                  document.getElementById("shade").classList.add('shade');
+                  console.log(pianoon)
+              }    
+              else if (pianoon == false){
+                  pianoon = true
+                  document.getElementById("shade").classList.remove('shade');
+                  console.log(pianoon)
+              }
+                // socket.emit( "button4_clicked");
+            });
+            $('#submitbutton').click(function (){
+                var bla = $('#chatinput').val();
+                console.log(bla)
+                socket.emit( "submitbutton_clicked", bla);
+            });
+
+
+            socket.on('updatechat', function(bla){
+                $("#liststuff").append('<li>'+ bla +'</li>' + '<br>');
+            })
             
             socket.on('server_response0', function(letter){ 
                 str += letter  
@@ -314,67 +502,79 @@
                 document.getElementById("eighteen").classList.add('black');
               }, 200);                        
             });
-                      
+                
             $(document).keydown( function(event) {
-                if(event.keyCode == 65) {                               
-                    socket.emit( "f_clicked");
+
+                if (pianoon == true){
+                    if(event.keyCode == 65) {                               
+                        socket.emit( "f_clicked");
+                    }
+                    if(event.keyCode == 87) {              
+                        socket.emit( "gb_clicked");
+                    }
+                    if(event.keyCode == 83) {                    
+                        socket.emit( "g_clicked");
+                    }
+                    if(event.keyCode == 69) {                    
+                        socket.emit( "ab_clicked");
+                    }
+                    if(event.keyCode == 68) {                  
+                        socket.emit( "a_clicked");
+                    }
+                    if(event.keyCode == 82) {                               
+                        socket.emit( "bb_clicked");
+                    }
+                    if(event.keyCode == 70) {                  
+                        socket.emit( "b_clicked");
+                    }
+                    if(event.keyCode == 71) {                    
+                        socket.emit( "c_clicked");
+                    }
+                    if(event.keyCode == 89) {                   
+                        socket.emit( "db_clicked");
+                    }
+                    if(event.keyCode == 72) {                   
+                        socket.emit( "d_clicked");
+                    }
+                    if(event.keyCode == 85) {                  
+                        socket.emit( "eb_clicked");
+                    }
+                    if(event.keyCode == 74) {                
+                        socket.emit( "e_clicked");
+                    }
+                    if(event.keyCode == 75) {                   
+                        socket.emit( "f2_clicked");
+                    }
+                    if(event.keyCode == 79) {                   
+                        socket.emit( "gb2_clicked");
+                    }
+                    if(event.keyCode == 76) {                  
+                        socket.emit( "g2_clicked");
+                    }
+                    if(event.keyCode == 80) {                
+                        socket.emit( "ab2_clicked");
+                    }
+                    if(event.keyCode == 186) {                   
+                        socket.emit( "a2_clicked");
+                    }
+                    if(event.keyCode == 219) {                  
+                        socket.emit( "bb2_clicked");
+                    }
+                    if(event.keyCode == 222) {                
+                        socket.emit( "b2_clicked");
+                    }
                 }
-                if(event.keyCode == 87) {              
-                    socket.emit( "gb_clicked");
+                else {
+                    console.log("testestest")
                 }
-                if(event.keyCode == 83) {                    
-                    socket.emit( "g_clicked");
-                }
-                if(event.keyCode == 69) {                    
-                    socket.emit( "ab_clicked");
-                }
-                if(event.keyCode == 68) {                  
-                    socket.emit( "a_clicked");
-                }
-                if(event.keyCode == 82) {                               
-                    socket.emit( "bb_clicked");
-                }
-                if(event.keyCode == 70) {                  
-                    socket.emit( "b_clicked");
-                }
-                if(event.keyCode == 71) {                    
-                    socket.emit( "c_clicked");
-                }
-                if(event.keyCode == 89) {                   
-                    socket.emit( "db_clicked");
-                }
-                if(event.keyCode == 72) {                   
-                    socket.emit( "d_clicked");
-                }
-                if(event.keyCode == 85) {                  
-                    socket.emit( "eb_clicked");
-                }
-                if(event.keyCode == 74) {                
-                    socket.emit( "e_clicked");
-                }
-                if(event.keyCode == 75) {                   
-                    socket.emit( "f2_clicked");
-                }
-                if(event.keyCode == 79) {                   
-                    socket.emit( "gb2_clicked");
-                }
-                if(event.keyCode == 76) {                  
-                    socket.emit( "g2_clicked");
-                }
-                if(event.keyCode == 80) {                
-                    socket.emit( "ab2_clicked");
-                }
-                if(event.keyCode == 186) {                   
-                    socket.emit( "a2_clicked");
-                }
-                if(event.keyCode == 219) {                  
-                    socket.emit( "bb2_clicked");
-                }
-                if(event.keyCode == 222) {                
-                    socket.emit( "b2_clicked");
-                }
+
+
+
             });
-        })
+       
+
+
+    })
 
     </script>
     
@@ -383,18 +583,22 @@
 <body>
     
     <div id="beats">
-        <input id="button1" type="button" value="Track 1">
-        <input id="button2" type="button" value="Track 2">
-        <input id="button3" type="button" value="Track 3">
-        <input id="button4" type="button" value="Track 4">
-        <input id="button5" type="button" value="Track 5">
+            
+                 <h1>The Piano Room</h1>
+        
+        <button id="button1" type="button" value="Track 1">Track 1</button>
+        <button id="button2" type="button" value="Track 2">Track 2</button>
+        <button id="button3" type="button" value="Track 3">Track 3</button>
+        <button id="button4" type="button" value="Track 4">Track 4</button>
+        <label id="switch">
+                <input type="checkbox" >
+                <span class="slider"></span>
+              </label>
+       
     </div>
     
-    
- 
-       
-
-    <ul class="set">
+<div id="shade"></div>
+    <ul class="set" >
             <li class="white b" id="zero"> A</li>          
             <li class="black as" id="one">W</li>
             <li class="white a" id="two">S</li>
@@ -415,10 +619,13 @@
             <li class="black fs" id="eighteen">[</li>
             <li class="white f" id="sixteen">'</li>
      </ul>
-            <!-- <div id="panel">
-                <div id="chat"></div>
-                <input value="Type Message Here"> 
-            </div> -->
+     
+            <div id="panel">
+                <div id="chat" style="overflow-y: scroll"><ul id="liststuff"></ul></div>
+                <input id="chatinput" style="overflow-y: scroll" placeholder="Type Message Here">
+                <button id="submitbutton" type="submit"> Enter</button>
+            </div>
             <div id="insert"></div>
+            
 </body>
 </html>
