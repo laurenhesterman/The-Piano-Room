@@ -11,14 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.4.1",
-    "express": "^4.13.4",
-    "howler": "^2.0.7",
     "mongoose": "^4.13.9",
     "play-sound": "^1.1.2",
-    "player": "^0.6.1",
-    "socket.io": "^2.0.4",
-    "soundfont-player": "^0.10.6",
-    "tone": "^0.11.11",
-    "web-audio-api": "^0.2.2"
+    "socket.io": "^2.0.4"
+   
   }
 }
